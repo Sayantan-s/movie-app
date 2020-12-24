@@ -11,6 +11,6 @@ const Button = () => {
 export default Button
 
 
-const Button = styled.div({
+const Btn = styled.div({
     
 })

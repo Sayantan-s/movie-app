@@ -56,7 +56,6 @@ const SignUp = () => {
             }
         })
     }
-    console.log(InputItems)
     return (
        <form>
         {
