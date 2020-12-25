@@ -1,0 +1,4 @@
+//AUTH ACTIONS
+
+export const LOGIN_SUCESSFUL = 'LOGIN_SUCESSFUL';
+export const LOGIN_ERROR = 'LOGIN_ERROR' 

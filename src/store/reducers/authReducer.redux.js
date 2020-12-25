@@ -1,11 +1,24 @@
+import { LOGIN_ERROR, LOGIN_SUCESSFUL } from "../action.redux";
+
 const initialState = {
-    authState : false
+   authError : null
 };
 
 const authReducer = (state = initialState,action) => {
 
     switch (action.type){
-        default : return state;
+        case LOGIN_ERROR : 
+            console.log('Login error!')
+            return {
+                ...state,
+                authError : 'Login failed!'
+            }
+        case LOGIN_SUCESSFUL : 
+            return {
+                ...state
+            }
+        default : 
+        return state;
     }
 }
 
