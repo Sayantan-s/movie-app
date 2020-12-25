@@ -1,6 +1,6 @@
 import { LOGIN_ERROR, LOGIN_SUCESSFUL } from "../action.redux";
 
-export const SignIn = (credentials) => {
+export const LogIn = (credentials) => {
     return (dispatch,getState,{ getFirebase }) => {
         const firebase = getFirebase();
 

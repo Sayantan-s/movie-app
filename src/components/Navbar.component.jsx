@@ -16,11 +16,11 @@ const Navbar = () => {
             <NavHandler>
                 <Search size="1rem"/>
                 <ToLink
-                 to="/login">
+                 to="/auth/login">
                      Login
                  </ToLink>
                  <ToLink
-                 to="/signup">
+                 to="/auth/signup">
                      Sign up
                  </ToLink>
                  <ToLink

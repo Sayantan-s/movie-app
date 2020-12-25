@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
 import './App.css';
 import Navbar from './components/Navbar.component';
-import Input from './components/ui/Input.component';
-import SignUp from './pages/SignUp';
+import Auth from './pages/Auth';
 import { Search } from './utils/Icons';
+import  { BrowserRouter as Router,Route,Link,Switch } from 'react-router-dom';
 
 function App() {
 
@@ -13,10 +13,11 @@ function App() {
 
   return (
     <div className="App">
-      {/*<SignUp />*/}
 
       <Navbar />
-      <SignUp />
+      <Switch>
+        <Route path="/auth" component={Auth} />
+      </Switch>
     </div>
   );
 }

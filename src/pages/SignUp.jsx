@@ -88,7 +88,7 @@ const SignUp = () => {
             {uploadtimeState && <Spinner />}  
        </SubmitButton>
        <AuthSecondaryRoutes 
-       text="Already have an account?"
+       text="Already a user?"
        linktext="Login"
        to="/login"
        />
