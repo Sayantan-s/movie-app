@@ -8,7 +8,7 @@ export const useForm =(initialVal) => {
             ...val,
             [name] : value
         })
-    }]
+    },setVal]
 }
 
 export const useWindowSize = () => {

@@ -9,13 +9,14 @@ import Spinner from '../../utils/Spinner.component'
 import { useDispatch, useSelector } from 'react-redux'
 import { LogIn } from '../../store/actions/authActions.redux'
 
-const Login = () => {
-    const [form,handleChange] = useForm({
+const Login = (props) => {
+    const [form,handleChange,setForm] = useForm({
         email : '',
         password : ''
     })
     const signInDispatch = useDispatch();
-    const { auth : { authError } } = useSelector(state => state); 
+    const state = useSelector(state => state); 
+    console.log(state);
     const {email,password} = form
     const [ uploadtimeState,setUploadTime ] = React.useState(false);
     const InputProps = {
@@ -54,6 +55,12 @@ const Login = () => {
     const SubmitHandler = async (eve) => {
         eve.preventDefault();
         await signInDispatch(LogIn(form));
+        setForm({
+            ...form,
+            email : '',
+            password: ''
+        })
+        props.history.replace('/')
     }
     return (
         <Form onSubmit={SubmitHandler}>

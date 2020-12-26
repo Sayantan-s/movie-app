@@ -1,4 +1,4 @@
-import { LOGIN_ERROR, LOGIN_SUCESSFUL } from "../action.redux";
+import { LOGIN_ERROR, LOGIN_SUCCESSFULL } from "../action.redux";
 
 const initialState = {
    authError : null,
@@ -14,7 +14,7 @@ const authReducer = (state = initialState,action) => {
                 ...state,
                 authError : 'Login failed!'
             }
-        case LOGIN_SUCESSFUL : 
+        case LOGIN_SUCCESSFULL : 
         //console.log('Login successfull')
             return {
                 ...state,

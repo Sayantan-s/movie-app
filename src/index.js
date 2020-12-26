@@ -4,9 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom'
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import store, { rrfProps } from './store/store.redux';
-import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+import { ReactReduxFirebaseProvider,isLoaded } from 'react-redux-firebase';
+
+const AuthisLoaded = ({ children }) => {
+   const auth = useSelector((state) => state.firebase.auth);   if
+   (!isLoaded(auth))
+      return (
+         <div>
+            Loading....
+         </div>
+      );   
+return children;
+}
 
 ReactDOM.render(
  <BrowserRouter>

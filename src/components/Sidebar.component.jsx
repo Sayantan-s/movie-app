@@ -1,31 +1,20 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+import { LogOut } from '../store/actions/authActions.redux'
 import { Ticket, Video,Profile,Logout, FacebookF, Paypal, Squarespace } from '../utils/Icons'
 
 const Sidebar = () => {
-    const Widgets = [
-        {
-            toPath: '/',
-            widgetName: 'Now Streaming',
-            Icon : Video
-        },
-        {
-            toPath : '/orders',
-            widgetName : 'My Tickets',
-            Icon : Ticket
-        },
-        {
-            toPath : '/profile',
-            widgetName : 'Profile',
-            Icon : Profile
-        },
-        {
-            toPath : '/',
-            widgetName : 'Logout',
-            Icon : Logout
-        }
-    ]
+    const { auth : { isEmpty } } = useSelector(state => state.firebase)
+
+    const dispatch = useDispatch();
+
+    const LogOutHandler = () => {
+        dispatch(LogOut());
+        console.log('Hello')
+    }
+
     return (
       <Bar>
           <NavlinkStyled to="/">
@@ -37,14 +26,31 @@ const Sidebar = () => {
               </span>
           </NavlinkStyled>
           <NavHolders>
+           <SidebarWidgets
+            toPath= '/'
+            widgetName= 'Now Streaming'
+            Icon = {Video}
+            />
             {
-                Widgets.map(widget => {
-                    return <SidebarWidgets
-                    key={widget.toPath}
-                    {...widget}
+                !isEmpty && <>
+                    <SidebarWidgets
+                    toPath = '/orders'
+                    widgetName = 'My Tickets'
+                    Icon = {Ticket}
                     />
-                })
-            }
+                    <SidebarWidgets
+                    toPath = {'/profile'}
+                    widgetName = {'Profile'}
+                    Icon = {Profile}
+                    />
+                    <SidebarWidgets
+                    redirect
+                    onClick={LogOutHandler}
+                    widgetName = {'Logout'}
+                    Icon = {Logout}
+                    />
+                </>
+            } 
           </NavHolders>
           <Footer>
             <span> Copyright &copy; 2005-{new Date().getFullYear()} </span>
@@ -111,18 +117,32 @@ gap:0.6rem;
 }
 `
 
-const SidebarWidgets = ({Icon,widgetName,toPath}) => {
-    return(
-        <StyledLink to={toPath}>
-           <div className="widget-holder">
+const SidebarWidgets = ({Icon,widgetName,toPath,redirect,...otherLinkProps}) => {
+    const widgetContent = <React.Fragment>
+        <div className="widget-holder">
                 <Icon size="1.5rem"/>
                 <span>{widgetName}</span>
            </div>
-        </StyledLink>
+    </React.Fragment>
+    return(
+       <>
+        {
+            redirect ? 
+            <StyledRedirect {...otherLinkProps}>
+                {widgetContent}
+            </StyledRedirect>
+            : <StyledLink
+            {...otherLinkProps} 
+            to={toPath}>
+                {widgetContent}
+            </StyledLink>
+
+        }
+       </>
     )
 }
 
-const StyledLink = styled(NavLink)`
+const styles = `
 display : flex;
 color : rgba(156, 163, 175, 1);
 text-decoration: none;
@@ -130,6 +150,7 @@ align-items: center;
 justify-items:center;
 text-align: center;
 position: relative;
+cursor : pointer;
 .widget-holder{
     display: flex;;
     align-items: center;
@@ -156,5 +177,7 @@ svg{
 }
 &:hover svg{
     fill : #F46C3F;
-}
-`
+}`
+
+const StyledLink = styled(NavLink)`${styles}`
+const StyledRedirect = styled.div`${styles}`
