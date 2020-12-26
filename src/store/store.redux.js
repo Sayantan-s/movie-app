@@ -25,9 +25,9 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore' // <- needed if using firestore
 // import 'firebase/functions' // <- needed if using httpsCallable
-import { createStore,compose, applyMiddleware } from 'redux'
-import { firebaseReducer } from 'react-redux-firebase'
-import { createFirestoreInstance, firestoreReducer } from 'redux-firestore' // <- needed if using firestore
+import { createStore,applyMiddleware } from 'redux'
+import { getFirebase } from 'react-redux-firebase'
+import { createFirestoreInstance,getFirestore } from 'redux-firestore' // <- needed if using firestore
 import rootReducer from "./rootReducer.redux";
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
@@ -57,7 +57,7 @@ firebase.firestore() // <- needed if using firestore
 // Create store with reducers and initial state
 const initialState = {}
 const store = createStore(rootReducer, initialState,composeWithDevTools(
-    applyMiddleware(thunk.withExtraArgument({  }))
+    applyMiddleware(thunk.withExtraArgument({ getFirebase,getFirestore }))
 ))
  
 export const rrfProps = {

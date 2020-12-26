@@ -1,20 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import { Avatar, Search } from '../utils/Icons'
+import { Search } from '../utils/Icons'
 
 const Navbar = () => {
     return (
         <Nav>
-            <div>
-                <ToLink
-                to="/"
-                className="Logo">
-                    Movie app
-                </ToLink>
-            </div>
             <NavHandler>
-                <Search size="1rem"/>
+                <Search size="1.2rem"/>
                 <ToLink
                  to="/auth/login">
                      Login
@@ -23,11 +16,6 @@ const Navbar = () => {
                  to="/auth/signup">
                      Sign up
                  </ToLink>
-                 <ToLink
-                 to="/">
-                     Sign out
-                 </ToLink>
-                 <Avatar size="1.5rem" />
             </NavHandler>
         </Nav>
     )
@@ -50,4 +38,7 @@ const NavHandler = styled.div`
 display : flex;
 align-items: center;
 gap:3rem;
+flex: 1;
+justify-content: flex-end;
+padding-right : 3rem;
 `

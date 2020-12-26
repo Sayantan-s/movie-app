@@ -45,16 +45,22 @@ padding : 0.8rem 0.5rem;
 transition : 0.3s all;
 border-radius: 0.8rem;
 border: 2.5px solid rgba(247, 244, 246,1);
+svg path{
+    fill : rgba(156, 163, 175, 0.7);
+}
 &:focus-within{
-    border: 2.5px solid rgba(209, 213, 219, 1);
+    border: 2.5px solid rgba(209, 213, 219, 1) ;
 }
 &:focus-within svg path{
-    fill : rgba(209, 213, 219, 1);
+    fill : rgba(156, 163, 175, 1);
 }
 input {
     border: none;
     outline: none;
     font-family : 'poppins';
     width : 100%;
+    ::placeholder{
+        color : rgba(156, 163, 175, 0.8);
+    }
 }
 `

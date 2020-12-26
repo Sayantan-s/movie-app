@@ -1,21 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
-import Button from '../components/ui/Button.component'
-import Input from '../components/ui/Input.component'
-import AuthSecondaryRoutes from '../utils/AuthSecondaryRoutes.component'
-import { useForm } from '../utils/customHooks'
-import { Mail, PasswordShow } from '../utils/Icons'
-import Spinner from '../utils/Spinner.component'
-import { useDispatch } from 'react-redux'
-import { LogIn } from '../store/actions/authActions.redux'
+import Button from '../../components/ui/Button.component'
+import Input from '../../components/ui/Input.component'
+import AuthSecondaryRoutes from '../../utils/AuthSecondaryRoutes.component'
+import { useForm } from '../../utils/customHooks'
+import { Facebook, Google, Mail, PasswordShow } from '../../utils/Icons'
+import Spinner from '../../utils/Spinner.component'
+import { useDispatch, useSelector } from 'react-redux'
+import { LogIn } from '../../store/actions/authActions.redux'
 
-const Login = ({match: {path}}) => {
+const Login = () => {
     const [form,handleChange] = useForm({
         email : '',
         password : ''
     })
     const signInDispatch = useDispatch();
-    console.log(path)
+    const { auth : { authError } } = useSelector(state => state); 
     const {email,password} = form
     const [ uploadtimeState,setUploadTime ] = React.useState(false);
     const InputProps = {
@@ -70,6 +70,13 @@ const Login = ({match: {path}}) => {
                 <span>Login</span>
                     {uploadtimeState && <Spinner />}  
             </SubmitButton>
+            <SocialAuth>
+               <span> or login with </span>
+               <div className="social-auth">
+                   <Google size="1.2rem"/>
+                   <Facebook size="1.2rem" fill="#006BE5"/>
+               </div>
+            </SocialAuth>
             <AuthSecondaryRoutes 
             text="Dont have an account?"
             linktext="Sign up"
@@ -99,4 +106,36 @@ align-items: center;
 justify-items : center;
 justify-content: center;
 gap: 0.5rem;
+`
+const SocialAuth = styled.div`
+display : flex;
+flex-direction: column;
+gap: 0.5rem;
+span {
+    letter-spacing : 0.1rem;
+    font-size : 0.8rem;
+    font-weight : 200;
+    -webkit-font-smoothing : antialiased;
+    text-transform : uppercase;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    &::before,&::after{
+        height : 1px;
+        width : 10%;
+        content : '';
+        opacity: 0.6;
+        background-color : var(--text);
+    }
+}
+.social-auth {
+    display :flex;
+    justify-content : center;
+    gap: 0.5rem;
+    align-items: center;
+    svg{
+        cursor : pointer;
+    }
+}
 `

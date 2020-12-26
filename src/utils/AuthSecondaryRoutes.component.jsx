@@ -15,6 +15,7 @@ export default AuthSecondaryRoutes
 const AuthText = styled.p`
 font-size : 0.85rem;
 -webkit-font-smoothing: antialiased;
+align-self:center;
 a{
     text-decoration : none;
     color : #706bfa;

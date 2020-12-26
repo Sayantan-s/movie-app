@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import Button from '../components/ui/Button.component'
-import Input from '../components/ui/Input.component'
-import AuthSecondaryRoutes from '../utils/AuthSecondaryRoutes.component'
-import { useForm } from '../utils/customHooks'
-import { Mail, PasswordShow, UserName } from '../utils/Icons'
-import Spinner from '../utils/Spinner.component'
+import Button from '../../components/ui/Button.component'
+import Input from '../../components/ui/Input.component'
+import AuthSecondaryRoutes from '../../utils/AuthSecondaryRoutes.component'
+import { useForm } from '../../utils/customHooks'
+import { Mail, PasswordShow, UserName,Google,Facebook } from '../../utils/Icons'
+import Spinner from '../../utils/Spinner.component'
 
 const SignUp = () => {
     const [form,handleChange] = useForm({
@@ -87,6 +87,13 @@ const SignUp = () => {
            <span>Register</span>
             {uploadtimeState && <Spinner />}  
        </SubmitButton>
+       <SocialAuth>
+               <span> or Register with </span>
+               <div className="social-auth">
+                   <Google size="1.2rem"/>
+                   <Facebook size="1.2rem" fill="#006BE5"/>
+               </div>
+        </SocialAuth>
        <AuthSecondaryRoutes 
        text="Already a user?"
        linktext="Login"
@@ -116,4 +123,36 @@ align-items: center;
 justify-items : center;
 justify-content: center;
 gap: 0.5rem;
+`
+const SocialAuth = styled.div`
+display : flex;
+flex-direction: column;
+gap: 0.5rem;
+span {
+    letter-spacing : 0.1rem;
+    font-size : 0.8rem;
+    font-weight : 200;
+    -webkit-font-smoothing : antialiased;
+    text-transform : uppercase;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    &::before,&::after{
+        height : 1px;
+        width : 10%;
+        content : '';
+        opacity: 0.6;
+        background-color : var(--text);
+    }
+}
+.social-auth {
+    display :flex;
+    justify-content : center;
+    gap: 0.5rem;
+    align-items: center;
+    svg{
+        cursor : pointer;
+    }
+}
 `

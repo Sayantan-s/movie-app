@@ -2,9 +2,10 @@ import { motion } from 'framer-motion'
 import React from 'react'
 import styled from 'styled-components'
 
-const Button = ({children,...btnProps}) => {
+const Button = ({children,...btnProps},ref) => {
     return (
         <Btn
+        ref={ref}
         whileTap={{ scale : 0.9 }} 
         {...btnProps}>
             {children}
@@ -12,7 +13,7 @@ const Button = ({children,...btnProps}) => {
     )
 }
 
-export default Button
+export default React.forwardRef(Button);
 
 
 const Btn = styled(motion.button)`
