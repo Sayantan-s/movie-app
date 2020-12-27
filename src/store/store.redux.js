@@ -1,33 +1,9 @@
-/*import { applyMiddleware, createStore,compose } from "redux";
-import logger from 'redux-logger'
-import rootReducer from "./rootReducer.redux";
-import thunk from 'redux-thunk'
-import { getFirestore,reduxFirestore } from 'redux-firestore'
-import { getFirebase,createFirebaseInstance } from 'react-redux-firebase'
-import firebaseUtils from '../firebase.config'
-
-const middlewares = [ logger,thunk.withExtraArgument({ getFirebase,getFirestore }) ];
-
-const store = createStore(rootReducer,compose(
-    applyMiddleware(...middlewares),
-    reduxFirestore(firebaseUtils),
-));
-
-const rrfProps = {
-    firebaseUtils,
-    config : '',
-    dispatch : store.dispatch,
-    createFirebaseInstance
-}
-
-export default { store,rrfProps };*/
 import firebase from 'firebase/app'
 import 'firebase/auth'
-import 'firebase/firestore' // <- needed if using firestore
-// import 'firebase/functions' // <- needed if using httpsCallable
+import 'firebase/firestore'
 import { createStore,applyMiddleware } from 'redux'
 import { getFirebase } from 'react-redux-firebase'
-import { createFirestoreInstance,getFirestore } from 'redux-firestore' // <- needed if using firestore
+import { createFirestoreInstance,getFirestore, reduxFirestore } from 'redux-firestore'
 import rootReducer from "./rootReducer.redux";
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
@@ -44,26 +20,22 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
  
-// react-redux-firebase config
 const rrfConfig = {
   userProfile: 'users'
-  // useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
 }
- 
-// Initialize other services on firebase instance
-firebase.firestore() // <- needed if using firestore
-// firebase.functions() // <- needed if using httpsCallable
- 
-// Create store with reducers and initial state
+
+firebase.firestore() 
+
 const initialState = {}
-const store = createStore(rootReducer, initialState,composeWithDevTools(
-    applyMiddleware(thunk.withExtraArgument({ getFirebase,getFirestore }))
+const store = createStore(rootReducer,initialState,composeWithDevTools(
+    applyMiddleware(thunk.withExtraArgument({ getFirebase,getFirestore })),
+    reduxFirestore(firebase)
 ))
  
 export const rrfProps = {
   firebase,
   config: rrfConfig,
-  dispatch: store.dispatch, // <- needed if using firestore
+  dispatch: store.dispatch,
   createFirestoreInstance
 }
 

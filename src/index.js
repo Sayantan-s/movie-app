@@ -7,13 +7,15 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider, useSelector } from 'react-redux';
 import store, { rrfProps } from './store/store.redux';
 import { ReactReduxFirebaseProvider,isLoaded } from 'react-redux-firebase';
+import Spinner from './utils/Spinner.component';
+//import styled from 'styled-components';
 
 const AuthisLoaded = ({ children }) => {
-   const auth = useSelector((state) => state.firebase.auth);   if
-   (!isLoaded(auth))
+   const auth = useSelector((state) => state.firebase.auth);   
+   if(!isLoaded(auth))
       return (
          <div>
-            Loading....
+            <Spinner fill="#F46C3F"/>
          </div>
       );   
 return children;
@@ -24,7 +26,9 @@ ReactDOM.render(
     <Provider store={store}>
      <ReactReduxFirebaseProvider {...rrfProps}>
         <React.StrictMode>
-          <App />
+         <AuthisLoaded>
+            <App />
+         </AuthisLoaded>
         </React.StrictMode>
      </ReactReduxFirebaseProvider>
     </Provider>

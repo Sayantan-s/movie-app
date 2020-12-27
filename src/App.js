@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from './components/Navbar.component';
 import Auth from './pages/Auth';
-import  { BrowserRouter as Router,Route,Link,Switch } from 'react-router-dom';
+import  { BrowserRouter as Router,Route,Link,Switch, Redirect } from 'react-router-dom';
 import Sidebar from './components/Sidebar.component';
 import styled from 'styled-components';
 import Toasts from './utils/Toasts.component';
@@ -21,6 +21,12 @@ function App() {
           <Navbar />
             <Switch>
               <Route path="/auth" component={Auth} />
+              <Route path="/*login*">
+                <Redirect to="/auth/login" />
+              </Route>
+              <Route path="/*signup*">
+                <Redirect to="/auth/signup" />
+              </Route>
             </Switch>
       </DashboardContainer>
      {

@@ -1,8 +1,8 @@
-import { LOGIN_ERROR, LOGIN_SUCCESSFULL } from "../action.redux";
+import { LOGIN_ERROR, LOGIN_SUCCESSFULL, LOGIN_WITH_GOOGLE_FAILED, LOGIN_WITH_GOOGLE_SUCCESSFULL, LOGOUT_SUCCESSFULL, SIGNUP_FAILED, SIGNUP_SUCCESSFULL } from "../action.redux";
 
 const initialState = {
    authError : null,
-   isAuthenticated : false
+   toastAlert : null
 };
 
 const authReducer = (state = initialState,action) => {
@@ -12,13 +12,42 @@ const authReducer = (state = initialState,action) => {
             //console.log('Login error!')
             return {
                 ...state,
-                authError : 'Login failed!'
+                authError : 'Login failed!',
             }
         case LOGIN_SUCCESSFULL : 
         //console.log('Login successfull')
             return {
                 ...state,
+                authError : null,
+            }
+        case LOGOUT_SUCCESSFULL : 
+            return {
+                ...state,
+                authError : null,
+            }
+        case SIGNUP_SUCCESSFULL : 
+            console.log('SignedUp!')
+            return{
+                ...state,
                 authError : null
+            }
+        case SIGNUP_FAILED : 
+            console.log('Signup failed!')
+            return {
+                ...state,
+                authError : action.err.message
+            }
+        case LOGIN_WITH_GOOGLE_SUCCESSFULL :
+            console.log('LoggedIn Google')
+                return {
+                    ...state,
+                    authError: null
+                }
+        case LOGIN_WITH_GOOGLE_FAILED :
+            console.log('LoggedIn Google failed')
+            return{
+                ...state,
+                authError : action.err 
             }
         default : return state;
     }

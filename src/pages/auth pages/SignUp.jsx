@@ -1,7 +1,10 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Redirect } from 'react-router'
 import styled from 'styled-components'
 import Button from '../../components/ui/Button.component'
 import Input from '../../components/ui/Input.component'
+import { SignUpWithEmailPass } from '../../store/actions/authActions.redux'
 import AuthSecondaryRoutes from '../../utils/AuthSecondaryRoutes.component'
 import { useForm } from '../../utils/customHooks'
 import { Mail, PasswordShow, UserName,Google,Facebook } from '../../utils/Icons'
@@ -17,6 +20,7 @@ const SignUp = () => {
 
     const {name,email,password,confpassword} = form
     const [ uploadtimeState,setUploadTime ] = React.useState(false);
+    const { uid } = useSelector(state => state.firebase.auth); 
     const InputProps = {
         name : {
             inpType : 'input',
@@ -68,39 +72,41 @@ const SignUp = () => {
             }
         })
     }
+    const dispatch = useDispatch();
     const SubmitHandler = async (eve) => {
         eve.preventDefault();
-        await console.log(form)
+        await console.log(form);
+        dispatch(SignUpWithEmailPass(form))
     }
-    return (
-       <Form onSubmit={SubmitHandler}>
-        {
-            InputItems.map(({key,data}) => {
-                return <Input
-                key={key}
-                {...data}
-                onChange={handleChange}
-                />
-            })
-        }
-       <SubmitButton>
-           <span>Register</span>
-            {uploadtimeState && <Spinner />}  
-       </SubmitButton>
-       <SocialAuth>
-               <span> or Register with </span>
-               <div className="social-auth">
-                   <Google size="1.2rem"/>
-                   <Facebook size="1.2rem" fill="#006BE5"/>
-               </div>
-        </SocialAuth>
-       <AuthSecondaryRoutes 
-       text="Already a user?"
-       linktext="Login"
-       to="/login"
-       />
-       </Form>
-    )
+    const ProtectedRoute = uid ? <Redirect to="/" /> 
+    :<Form onSubmit={SubmitHandler}>
+    {
+        InputItems.map(({key,data}) => {
+            return <Input
+            key={key}
+            {...data}
+            onChange={handleChange}
+            />
+        })
+    }
+   <SubmitButton>
+       <span>Register</span>
+        {uploadtimeState && <Spinner fill="#fff"/>}  
+   </SubmitButton>
+   <SocialAuth>
+           <span> or Register with </span>
+           <div className="social-auth">
+               <Google size="1.2rem"/>
+               <Facebook size="1.2rem" fill="#006BE5"/>
+           </div>
+    </SocialAuth>
+   <AuthSecondaryRoutes 
+   text="Already a user?"
+   linktext="Login"
+   to="/login"
+   />
+   </Form>
+    return ProtectedRoute
 }
 
 export default SignUp
