@@ -5,14 +5,28 @@ import  { BrowserRouter as Router,Route,Link,Switch, Redirect } from 'react-rout
 import Sidebar from './components/Sidebar.component';
 import styled from 'styled-components';
 import Toasts from './utils/Toasts.component';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { DangerToast } from './utils/Icons'
+import React from 'react'
+import { TOAST_REMOVER } from './store/action.redux';
 
 function App() {
 
   const { auth : { authError } } = useSelector(state => state); 
 
-  console.log(authError);
+  const state = useSelector(state => state)
+
+  console.log(state);
+
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+   if(authError){
+    setTimeout(() => {
+      dispatch({ type : TOAST_REMOVER })
+    },3000)
+   }
+  },[authError])
 
   return (
     <AppContainer>
@@ -33,7 +47,6 @@ function App() {
        authError &&  <Toasts 
        Icon={DangerToast} 
        toastText = {authError}
-       extraText={'Wrong credentials!'}
        color={'rgba(254, 226, 226,1)'}
        bgColor={'#F24744'}
      />

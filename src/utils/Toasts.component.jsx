@@ -1,25 +1,46 @@
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import React from 'react'
 import styled from 'styled-components'
 
 const Toasts = ({Icon,toastText,extraText,...otherProps}) => {
+    const duration = 0.2
+    const variants = {
+        initial: {
+          opacity: 0,
+        },
+        enter: {
+          opacity: 1,
+          transition: {
+            duration: duration,
+            type:'spring',
+            stiffness : 30
+          },
+        },
+        exit: {
+          opacity: 0,
+          transition: { duration: duration },
+        },
+      }
     return (
-        <Toastify
-        initial={{ y: 2000,opacity: 0 }} 
-        animate={{ y: 0,opacity:1 }}
-        transition={{ type:'spring',duration:0.2,stiffness : 30 }}
-        {...otherProps}>
-            <Icon size="1.5rem"/>
-            <p>
-                <span>
-                    {toastText}
-                </span>
-                &nbsp;
-                <span>
-                    {extraText}
-                </span>
-            </p>
+       <AnimatePresence exitBeforeEnter>
+            <Toastify
+            variants={variants}
+             initial="initial"
+             animate="enter"
+             exit="exit"
+            {...otherProps}>
+                <Icon size="1.5rem"/>
+                <p>
+                    <span>
+                        {toastText}
+                    </span>
+                    &nbsp;
+                    <span>
+                        {extraText}
+                    </span>
+                </p>
         </Toastify>
+       </AnimatePresence>
     )
 }
 

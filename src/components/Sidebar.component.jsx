@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, Redirect } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 import { LogOut } from '../store/actions/authActions.redux'
 import { Ticket, Video,Profile,Logout, FacebookF, Paypal, Squarespace } from '../utils/Icons'
@@ -9,10 +9,11 @@ const Sidebar = () => {
     const { auth : { isEmpty,uid } } = useSelector(state => state.firebase)
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const LogOutHandler = () => {
         dispatch(LogOut());
-        console.log('Hello')
+        history.goBack('/')
     }
 
     return (

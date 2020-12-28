@@ -1,4 +1,4 @@
-import { LOGIN_ERROR, LOGIN_SUCCESSFULL, LOGIN_WITH_GOOGLE_FAILED, LOGIN_WITH_GOOGLE_SUCCESSFULL, LOGOUT_SUCCESSFULL, SIGNUP_FAILED, SIGNUP_SUCCESSFULL } from "../action.redux";
+import { LOGIN_ERROR, LOGIN_SUCCESSFULL, LOGOUT_SUCCESSFULL, SIGNUP_FAILED, SIGNUP_SUCCESSFULL } from "../action.redux";
 
 export const LogIn = credentials => {
     return (dispatch,getState,{ getFirebase }) => {
@@ -8,9 +8,10 @@ export const LogIn = credentials => {
             credentials.email,
             credentials.password
         ).then(_ => {
-            dispatch({ type : LOGIN_SUCCESSFULL })
+            dispatch({ type : LOGIN_SUCCESSFULL });
         }).catch(err => {
-            dispatch({ type : LOGIN_ERROR,err })
+            console.log(err)
+            dispatch({ type : LOGIN_ERROR,err });
         })
     }
 }
@@ -36,7 +37,7 @@ export const SignUpWithEmailPass = user => {
             user.password
         ).then(res  => {
             return firestore.collection('users').doc(res.user.uid).set({
-                fullname: user.name,
+                name: user.name,
                 email: user.email
             })
         })
@@ -44,26 +45,8 @@ export const SignUpWithEmailPass = user => {
             dispatch({ type : SIGNUP_SUCCESSFULL })
         })
         .catch(err => {
+            console.log(err)
             dispatch({ type : SIGNUP_FAILED,err })
         })
-    }
-}
-
-export const SignUpWithGoogle = () => {
-    return (dispatch,getState,{ getFirebase,getFirestore }) => {
-        const firebase = getFirebase();
-        const firestore = getFirestore();
-        const google = firebase.auth.GoogleAuthProvider();
-        firebase.auth.signInWithPopup(google)
-            .then(res => {
-                console.log(res)
-                const token = res.credential.accessToken;
-                const user = res.user;
-                dispatch({ type : LOGIN_WITH_GOOGLE_SUCCESSFULL })
-            })
-            .catch(err => {
-                console.log(err);
-                dispatch({ type : LOGIN_WITH_GOOGLE_FAILED,err })
-            })
     }
 }

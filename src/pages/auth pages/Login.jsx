@@ -9,6 +9,8 @@ import Spinner from '../../utils/Spinner.component'
 import { useDispatch, useSelector } from 'react-redux'
 import { LogIn, SignUpWithGoogle } from '../../store/actions/authActions.redux'
 import { Redirect } from 'react-router'
+import { useFirebase, useFirestore } from 'react-redux-firebase'
+import { LOGIN_WITH_FB_SUCCESSFULL, LOGIN_WITH_GOOGLE_SUCCESSFULL } from '../../store/action.redux'
 
 const Login = (props) => {
     const [form,handleChange,setForm] = useForm({
@@ -16,8 +18,12 @@ const Login = (props) => {
         password : ''
     })
     const signInDispatch = useDispatch();
+    const firebase = useFirebase();
+    const firestore = useFirestore();
 
     const { uid } = useSelector(state => state.firebase.auth); 
+    const state = useSelector(state => state)
+    console.log(state)
 
     const {email,password} = form
     const [ uploadtimeState,setUploadTime ] = React.useState(false);
@@ -66,8 +72,39 @@ const Login = (props) => {
     }
 
     const WithGoogle = () => {
-        signInDispatch(SignUpWithGoogle())
-        props.history.replace('/')
+        firebase
+        .login({
+            provider : 'google',
+            type : 'popup'
+        })
+        .then(res => {
+            console.log(res);
+            firestore.collection('users').doc(res.user.uid).set({
+                ...res.additionalUserInfo.profile
+            })
+            signInDispatch({ type : LOGIN_WITH_GOOGLE_SUCCESSFULL })
+            props.history.replace('/')
+        })
+        .catch(err => console.log(err))
+
+    }
+
+    const WithFB = () => {
+        firebase
+        .login({
+            provider : 'facebook',
+            type : 'popup'
+        })
+        .then(res => {
+            console.log(res);
+            firestore.collection('users').doc(res.user.uid).set({
+                ...res.additionalUserInfo.profile
+            })
+            signInDispatch({ type : LOGIN_WITH_FB_SUCCESSFULL })
+            props.history.replace('/')
+        })
+        .catch(err => console.log(err))
+
     }
 
     const ProtectedRoute = uid ? <Redirect to="/" /> 
@@ -89,7 +126,7 @@ const Login = (props) => {
        <span> or login with </span>
        <div className="social-auth">
            <Google size="1.2rem" onClick={WithGoogle}/>
-           <Facebook size="1.2rem" fill="#006BE5"/>
+           <Facebook size="1.2rem" fill="#006BE5" onClick={WithFB}/>
        </div>
     </SocialAuth>
     <AuthSecondaryRoutes 

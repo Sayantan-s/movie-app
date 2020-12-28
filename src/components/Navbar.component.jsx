@@ -3,14 +3,18 @@ import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { Search } from '../utils/Icons'
+import ProfileAvatar from './ui/Avatar.component'
 
 const Navbar = () => {
-    const { auth : { isEmpty } } = useSelector(state => state.firebase)
+    const { auth : { uid } } = useSelector(state => state.firebase)
     return (
         <Nav>
             <NavHandler>
                 <Search size="1.2rem"/>
-                {isEmpty && <div className="AuthLinks">
+                {uid &&
+                    <ProfileAvatar />
+                }
+                {!uid && <div className="AuthLinks">
                     <ToLink
                     color ={'#F46C3F'}
                     bgCol="#FBE9E7"

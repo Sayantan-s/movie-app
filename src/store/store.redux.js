@@ -1,6 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import  'firebase/database'
 import { createStore,applyMiddleware } from 'redux'
 import { getFirebase } from 'react-redux-firebase'
 import { createFirestoreInstance,getFirestore, reduxFirestore } from 'redux-firestore'
@@ -21,7 +22,10 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
  
 const rrfConfig = {
-  userProfile: 'users'
+  userProfile: 'users',
+  useFirestoreForProfile: true,
+  presence: 'presence',
+  sessions: 'sessions'
 }
 
 firebase.firestore() 
