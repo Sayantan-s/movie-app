@@ -22,7 +22,7 @@ const Toasts = ({Icon,toastText,extraText,...otherProps}) => {
         },
       }
     return (
-       <AnimatePresence exitBeforeEnter>
+       <AnimatePresence>
             <Toastify
             variants={variants}
              initial="initial"

@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DangerToast } from './utils/Icons'
 import React from 'react'
 import { TOAST_REMOVER } from './store/action.redux';
+import Dashboard from './pages/Dashboard';
+import MoviePage from './pages/dynamic/MoviePage';
 
 function App() {
 
@@ -35,6 +37,8 @@ function App() {
           <Navbar />
             <Switch>
               <Route path="/auth" component={Auth} />
+              <Route path="/" exact component={Dashboard} />
+              <Route path={`/:id`} component={MoviePage} exact/>
               <Route path="/*login*">
                 <Redirect to="/auth/login" />
               </Route>
@@ -66,4 +70,5 @@ position: relative;
 
 const DashboardContainer = styled.div`
 flex-basis: 85%;
+margin: 4rem 0rem 2rem 2rem;
 `

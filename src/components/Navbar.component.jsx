@@ -41,7 +41,8 @@ const Nav = styled.nav`
 display : flex;
 justify-content: space-between;
 align-items: center;
-padding:1rem;
+position: absolute;
+right : 0;
 `
 
 const ToLink = styled(NavLink)`

@@ -75,6 +75,9 @@ display:flex;
 gap: 5rem;
 flex-direction:column;
 position:relative;
+flex-shrink:0;
+min-width:max-content;
+z-index:1000;
 `
 const NavlinkStyled = styled(NavLink)`
 text-decoration: none;
