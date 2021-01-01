@@ -1,0 +1,114 @@
+{
+ "ww84":  {
+    "thumbnail" : {
+         "name": "Wonder Woman 1984",
+         "photoUrl" : "https://www.joblo.com/assets/images/joblo/posters/2020/12/wonder-woman-1984-gal-gadot-poster.jpg",
+         "movieProps" : {
+             "rates" : 11253,
+             "rating": 5.7,
+             "release" : 2020,
+             "Run Time": 141,
+             "MMPA Rating":"PG-13",
+             "genre" : [
+                     "Action",
+                     "Fantasy"
+                 ]
+             }
+    },
+    "moviepage": {
+         "name": "Wonder Woman 1984",
+         "photoUrl" : "https://www.joblo.com/assets/images/joblo/posters/2020/12/wonder-woman-1984-gal-gadot-poster.jpg",   
+         "movieProps" : {
+             "rates" : 11253,
+             "star" : 3,
+             "release" : 2020,
+                 "genre" : [
+                     "Action",
+                     "Fantasy"
+                 ]
+             },
+         "description" : "Rewind to the 1980s as Wonder Woman's next big screen adventure finds her facing two all-new foes: Max Lord and The Cheetah.",
+         "director" : "Patty Jenkins",
+         "writers" : ["Patty Jenkin","Geoff Johns"],
+         "cast" : [
+             {
+                 "name" : "Gal Gadot",
+                 "img" : "https://wallpaperstream.com/wallpapers/full/gal-gadot/Gal-Gadot-HD.jpg"
+             },
+             {   
+                 "name" : "Chris Pine",   
+                 "img" : "https://7wallpapers.net/wp-content/uploads/2_Chris-Pine.jpg"
+             },
+             {
+                 "name" : "Christen Wiig",
+                 "img" : "https://wallpapercave.com/wp/wp6639183.jpg"
+             },
+             {
+                 "name" : "Pedro Pascal",
+                 "img" : "https://www.theplace2.ru/cache/archive/pedro_pascal/img/1_(4)(23)-gthumb-gwdata1200-ghdata1200-gfitdatamax.jpg"
+             },
+             {   
+                 "name" : "Robin Wright",
+                 "img" : "https://wallpapercave.com/wp/wp4158668.jpg"
+             }
+         ],
+         "trailer" : "https://www.youtube.com/watch?v=rjIpY2cQBI8"
+     }
+ },  
+ "anotherRound" :    {
+    "thumbnail" : {
+         "name": "Another Round",
+         "photoUrl" : "https://www.joblo.com/assets/images/joblo/posters/2020/12/another-round-poster.jpg",
+         "movieProps" : {
+             "rates" : 7158,
+             "rating": 7.2,
+             "release" : 2020,
+             "Run Time" :117,
+             "MMPA Rating":"PG-13",
+             "genre" : [
+                    "Comedy",
+                    "Drama"
+                 ]
+             }
+    },
+    "moviepage": {
+        "name": "Another Round",
+        "photoUrl" : "https://www.joblo.com/assets/images/joblo/posters/2020/12/another-round-poster.jpg",
+        "movieProps" : {
+             "rates" : 7158,
+             "star" : 4,
+             "release" : 2020,
+                 "genre" : [
+                     "Comedy",
+                     "Drama"
+                 ]
+             },
+         "description" : "There is a theory that man is born with half a per mille too little. That alcohol in the blood opens the mind to the outside world, problems seem smaller and creativity increases. We know it well; after the first glass of wine, the conversation lifts, the possibilities open up. Martin is a high school teacher. He feels old and tired. His students and their parents want him terminated to increase their average. Encouraged by the per mille theory, Martin and his three colleagues throw themselves into an experiment to maintain a constant alcohol impact in everyday life. If Churchill won World War II in a dense fog of spirits, what could the strong drops do for them and their students? The result is positive in the beginning. Martin's class is in a different way now, and the project is being promoted to a real academic study with the collection of results. Slowly, but surely, the alcohol makes the four friends and their surroundings loosen up. The results are rising, and they really begin...",
+         "director" : " Thomas Vinterberg",
+         "writers" : ["Thomas Vinterberg","Tobias Lindholm"],
+         "cast" : [
+             {
+                 "name" : "Mads Mikkelsen",
+                 "img" : "https://i.pinimg.com/originals/b4/e2/cf/b4e2cf86cf7cae05fcb1ce05c9526745.jpg"
+             },
+             {   
+                 "name" : "Thomas Bo Larsen",   
+                 "img" : "https://m.media-amazon.com/images/M/MV5BMTYyODM1NjAxMV5BMl5BanBnXkFtZTcwMzkwNTM4Nw@@._V1_.jpg"
+             },
+             {
+                 "name" : "Maria Bonnevie",
+                 "img" : "https://7wallpapers.net/wp-content/uploads/1_Maria-Bonnevie.jpg"
+             },
+             {
+                 "name" : "Susse Wold",
+                 "img" : "https://ilarge.lisimg.com/image/19582289/1118full-susse-wold.jpg"
+             },
+             {   
+                 "name" : "Magnus Millang",
+                 "img" : "https://www2.pictures.zimbio.com/gi/Commune+Photo+Call+66th+Berlinale+International+9g0RUmuZDxax.jpg"
+             }
+         ],
+         "trailer" : "https://www.youtube.com/watch?v=F8-8xOPB9XY"
+     }
+}
+}

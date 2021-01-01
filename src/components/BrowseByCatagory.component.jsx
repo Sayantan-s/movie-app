@@ -1,7 +1,6 @@
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useFirestoreConnect } from 'react-redux-firebase'
 import { Route, Switch, useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -10,12 +9,6 @@ import MoviePage from '../pages/dynamic/MoviePage'
 
 const BrowseByCatagory = () => {
     const history = useHistory();
-    console.log(history)
-    useFirestoreConnect([
-        {
-            collection : 'movies'
-        }
-    ])
     let scrollRef = React.useRef(null);
     const x = useSpring(0,{
         damping : 200,
@@ -23,12 +16,6 @@ const BrowseByCatagory = () => {
         ease: [0.6,0.05,-0.01,0.99]
     })
     const movies = useSelector(state => state.firestore.ordered.movies);
-
-    console.log(x.get())
-
-    React.useEffect(_ => {
-        
-    },[])
     return (
        <SectionBrowse>
            <h2>
@@ -36,28 +23,26 @@ const BrowseByCatagory = () => {
            </h2>
             <GenreFilter>
                 {
-                    ['Action','Drama','Crime','Sci-fi','Comedy'].map(genre => {
+                    ['Action','Drama','Crime','Sci-fi','Comedy','Romance'].map(genre => {
                         return <Genres isActive>{genre}</Genres>
                     })
                 }
             </GenreFilter>
-          {movies !== undefined ? <MovieStack 
+          { movies ? <MovieStack 
           ref={ele => scrollRef = ele} 
-          style={{ x }}
           drag={'x'}
-          dragConstraints={{ left: -2050,right : 0 }}
+          dragConstraints={{ left: -2330,right : 0 }}
           dragTransition={{ bounceStiffness: 1000, bounceDamping: 50,min: 0, max:100 }}
-          dragPropagation
           layout
           >
                {
-                  movies.map((movie,id) => {
+                  movies.map(({thumbnail,id}) => {
                       return <CardLink
-                      to={`${history.location.pathname}${movie.name}`}
-                      key={movie.name}
+                      to={`${history.location.pathname}${id}`}
+                      key={id}
                       >
                        <MovieCards
-                      {...movie}
+                      {...thumbnail}
                       />
                       </CardLink>
                   } )
@@ -94,6 +79,7 @@ display: flex;
 gap: 2rem;
 margin-top: 1.5rem;
 cursor: grab;
+width: auto;
 `
 const CardLink = styled(Link)`
 text-decoration: none;

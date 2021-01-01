@@ -11,7 +11,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   user-select: none;
-  overflow: hidden;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  
 }
 
 
@@ -26,3 +27,6 @@ code {
   color:  #f7f7f7;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}

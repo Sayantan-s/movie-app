@@ -11,17 +11,33 @@ import React from 'react'
 import { TOAST_REMOVER } from './store/action.redux';
 import Dashboard from './pages/Dashboard';
 import MoviePage from './pages/dynamic/MoviePage';
+import { useFirestore, useFirestoreConnect } from 'react-redux-firebase';
+import ButtonComponent from './components/ui/Button.component';
+import db from './db/movie.json';
 
 function App() {
 
+  useFirestoreConnect([
+    {
+      collection : 'movies',
+    }
+  ])
+
   const { auth : { authError } } = useSelector(state => state); 
 
-  const state = useSelector(state => state)
+  const state = useSelector(state => state.data?.movies)
 
   console.log(state);
 
+  const firestore = useFirestore();
+
   const dispatch = useDispatch();
 
+  const states = useSelector(state => state.firestore);
+
+
+
+  console.log(states);
   React.useEffect(() => {
    if(authError){
     setTimeout(() => {
@@ -30,11 +46,29 @@ function App() {
    }
   },[authError])
 
+  let dataArray = [];
+
+  for(let i in db){
+    dataArray.push({
+      slug : i,
+      ...db[i]
+    })
+  }
+  console.log(dataArray);
+
+  const postHandler = () => {
+    dataArray.map(data => {
+      return firestore.collection('movies').doc(data.slug).set(data)
+            .then(_ => console.log('Successfully pushed'))
+            .catch(err => console.log(err));
+    })
+  }
   return (
     <AppContainer>
       <Sidebar />
       <DashboardContainer>
           <Navbar />
+          <ButtonComponent onClick={postHandler}>Googlu</ButtonComponent>
             <Switch>
               <Route path="/auth" component={Auth} />
               <Route path="/" exact component={Dashboard} />
@@ -70,5 +104,5 @@ position: relative;
 
 const DashboardContainer = styled.div`
 flex-basis: 85%;
-margin: 4rem 0rem 2rem 2rem;
+padding: 4rem 0rem 2rem 2rem;
 `

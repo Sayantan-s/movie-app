@@ -1,14 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Star } from '../../utils/Icons'
+import Image from '../../utils/Image.component'
 
 const MovieCards = ({photoUrl,name,movieProps}) => {
     const { rating,rates,genre,release } = movieProps
     return (
         <Card>
-            <div className="movie-poster">
-                <img src={photoUrl} alt={name} />
-            </div>
+            <Image
+            width={'250px'}
+            height={'400px'}
+            src={photoUrl}
+            alt={name}
+            />
             <div className="movie-content">
                 <h2>{name}</h2>
                 <h3>
@@ -27,6 +31,39 @@ const MovieCards = ({photoUrl,name,movieProps}) => {
 }
 
 export default MovieCards
+
+export const FilmCards = ({photoUrl,name,movieProps}) => {
+    const { rating,rates,genre,release } = movieProps
+    return(
+        <Card>
+            <Image 
+            width={'500px'} 
+            height={'300px'}
+            src={photoUrl}
+            alt={name}
+            radius={'1.5rem'}
+            />
+            <div className="movie-content">
+                <h2>{name}</h2>
+                <h3>
+                    <span>{release}</span>
+                    &middot;
+                    <span>{genre.join(' | ')}</span>
+                </h3>
+                <div className="movie-content--rates">
+                    <Star size="0.8rem" fill="#F9982D"/>
+                    <span>{rating}</span>
+                    <span>({rates})</span>
+                </div>
+            </div>
+        </Card>
+    )
+}
+
+
+const SecondaryCards = styled.div`
+
+`
 
 const Card = styled.figure`
 padding: 0;
