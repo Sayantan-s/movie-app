@@ -23,7 +23,7 @@ position: relative;
 overflow: hidden;
 width: ${props => props.width};
 height: ${props => props.height};
-border-radius: ${props => props.radius || 'none'};
+border-radius: ${props => props.radius || '0.8rem'};
 img{
     position: absolute;
     width: 100%;

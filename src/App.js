@@ -105,4 +105,7 @@ position: relative;
 const DashboardContainer = styled.div`
 flex-basis: 85%;
 padding: 4rem 0rem 2rem 2rem;
+overflow-y:scroll;
+position:sticky;
+overflow-x:hidden;
 `

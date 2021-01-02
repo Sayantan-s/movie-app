@@ -20,7 +20,10 @@
          "photoUrl" : "https://www.joblo.com/assets/images/joblo/posters/2020/12/wonder-woman-1984-gal-gadot-poster.jpg",   
          "movieProps" : {
              "rates" : 11253,
+             "rating": 5.7,
              "star" : 3,
+             "Run Time": 141,
+             "MMPA Rating":"PG-13",
              "release" : 2020,
                  "genre" : [
                      "Action",
@@ -75,9 +78,12 @@
         "name": "Another Round",
         "photoUrl" : "https://www.joblo.com/assets/images/joblo/posters/2020/12/another-round-poster.jpg",
         "movieProps" : {
-             "rates" : 7158,
              "star" : 4,
+             "rates" : 7158,
+             "rating": 7.2,
              "release" : 2020,
+             "Run Time" :117,
+             "MMPA Rating":"PG-13",
                  "genre" : [
                      "Comedy",
                      "Drama"

@@ -46,6 +46,11 @@ const ProfileAvatar = () => {
 
 export default ProfileAvatar
 
+export const NormalAvatar = ({src,name,...otherProps}) => 
+<ProfilePicture {...otherProps}>
+    <img src={src} alt={name} />
+</ProfilePicture>
+
 
 const ProfilePicture = styled.div`
 position: relative;
