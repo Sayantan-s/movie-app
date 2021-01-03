@@ -5,12 +5,10 @@ import { Route, Switch, useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import MovieCards from './ui/MovieCards.component'
-import MoviePage from '../pages/dynamic/MoviePage'
 
 const BrowseByCatagory = () => {
     const history = useHistory();
-    let scrollRef = React.useRef(null);
-    const x = useSpring(0,{
+    const x = useSpring(0,{ 
         damping : 200,
         stiffness: 200,
         ease: [0.6,0.05,-0.01,0.99]
@@ -24,12 +22,11 @@ const BrowseByCatagory = () => {
             <GenreFilter>
                 {
                     ['Action','Drama','Crime','Sci-fi','Comedy','Romance'].map(genre => {
-                        return <Genres isActive>{genre}</Genres>
+                        return <Genres isActive key={genre}>{genre}</Genres>
                     })
                 }
             </GenreFilter>
           { movies ? <MovieStack 
-          ref={ele => scrollRef = ele} 
           drag={'x'}
           dragConstraints={{ left: -2330,right : 0 }}
           dragTransition={{ bounceStiffness: 1000, bounceDamping: 50,min: 0, max:100 }}
@@ -41,6 +38,7 @@ const BrowseByCatagory = () => {
                       to={`${history.location.pathname}${id}`}
                       key={id}
                       >
+
                        <MovieCards
                       {...thumbnail}
                       />

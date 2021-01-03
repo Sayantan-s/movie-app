@@ -14,6 +14,7 @@ import MoviePage from './pages/dynamic/MoviePage';
 import { useFirestore, useFirestoreConnect } from 'react-redux-firebase';
 import ButtonComponent from './components/ui/Button.component';
 import db from './db/movie.json';
+import HallBooking from './pages/dynamic/HallBooking';
 
 function App() {
 
@@ -73,6 +74,7 @@ function App() {
               <Route path="/auth" component={Auth} />
               <Route path="/" exact component={Dashboard} />
               <Route path={`/:id`} component={MoviePage} exact/>
+              <Route path={`/:id/:key hallbooking`} component={HallBooking} exact/>
               <Route path="/*login*">
                 <Redirect to="/auth/login" />
               </Route>

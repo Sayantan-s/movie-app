@@ -7,8 +7,8 @@
              "rates" : 11253,
              "rating": 5.7,
              "release" : 2020,
-             "Run Time": 141,
-             "MMPA Rating":"PG-13",
+             "RunTime": 141,
+             "MMPARating":"PG-13",
              "genre" : [
                      "Action",
                      "Fantasy"
@@ -22,8 +22,8 @@
              "rates" : 11253,
              "rating": 5.7,
              "star" : 3,
-             "Run Time": 141,
-             "MMPA Rating":"PG-13",
+             "RunTime": 141,
+             "MMPARating":"PG-13",
              "release" : 2020,
                  "genre" : [
                      "Action",
@@ -66,8 +66,8 @@
              "rates" : 7158,
              "rating": 7.2,
              "release" : 2020,
-             "Run Time" :117,
-             "MMPA Rating":"PG-13",
+             "RunTime" :117,
+             "MMPARating":"PG-13",
              "genre" : [
                     "Comedy",
                     "Drama"
@@ -82,8 +82,8 @@
              "rates" : 7158,
              "rating": 7.2,
              "release" : 2020,
-             "Run Time" :117,
-             "MMPA Rating":"PG-13",
+             "RunTime" :117,
+             "MMPARating":"PG-13",
                  "genre" : [
                      "Comedy",
                      "Drama"

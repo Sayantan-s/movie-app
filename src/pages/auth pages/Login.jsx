@@ -60,6 +60,9 @@ const Login = (props) => {
             }
         })
     }
+
+    const user = firebase.auth().currentUser;
+
     const SubmitHandler = async (eve) => {
         eve.preventDefault();
         await signInDispatch(LogIn(form));
@@ -83,6 +86,7 @@ const Login = (props) => {
                 ...res.additionalUserInfo.profile
             })
             signInDispatch({ type : LOGIN_WITH_GOOGLE_SUCCESSFULL })
+            console.log(user);
             props.history.replace('/')
         })
         .catch(err => console.log(err))
@@ -101,6 +105,7 @@ const Login = (props) => {
                 ...res.additionalUserInfo.profile
             })
             signInDispatch({ type : LOGIN_WITH_FB_SUCCESSFULL })
+            console.log(user);
             props.history.replace('/')
         })
         .catch(err => console.log(err))

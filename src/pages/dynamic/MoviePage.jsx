@@ -2,21 +2,22 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { Catagory, Star,Voters } from '../../utils/Icons';
+import { Catagory, Play, Star,Ticket2,Voters } from '../../utils/Icons';
 import Image from '../../utils/Image.component';
 import Spinner from '../../utils/Spinner.component';
 import { NormalAvatar } from '../../components/ui/Avatar.component'
-import { useHistory } from 'react-router';
+import { Route, useHistory } from 'react-router';
 import ButtonComponent from '../../components/ui/Button.component';
+import { Link } from 'react-router-dom';
 
 const MoviePage = (props) => {
     const pageData = useSelector(state => state.firestore.ordered.movies)?.find(data => {
         return data.id === props.match.params.id
     }).moviepage;
 
-    const history = useHistory();
+    //const history = useHistory();
 
-    console.log(pageData);
+    const { history : { location : { pathname,key }}}   = props;
 
     const avatarShowing = pageData?.cast.length > 4 ? pageData.cast.slice(0,4) : pageData?.cast;
 
@@ -52,6 +53,8 @@ const MoviePage = (props) => {
                             ))
                         }
                     </StarRate>
+                    <span className="movie-runtime">{pageData.movieProps.RunTime} mins</span>
+                    <span className="movie-mmpa">{pageData.movieProps.MMPARating}</span>
                 </Divs>
                 <Divs gap="1.2rem">
                     <Divs gap="0.7rem" margin="1rem 0">
@@ -92,16 +95,44 @@ const MoviePage = (props) => {
                        </span>
                     </div>
                 </Divs>
-                <Divs margin="2.5rem 0 0 0">
-                    <ButtonComponent>Book Now</ButtonComponent>
-                    <ButtonComponent>
-                        <span>Watch Trailer</span>
-                    </ButtonComponent>
+                <Divs margin="2.5rem 0 0 0" gap={"1rem"}>
+                    <Link
+                    to={`${pathname}/${pageData.name} hallbooking`}
+                    >
+                        <ButtonComponent 
+                        padding="0.7rem 1rem"
+                        radius="0.8rem"
+                        color="#F46C3F"
+                        backgroundColor="#FBE9E7"
+                        fontWeight="600">
+                            <Ticket2
+                            size="2rem" 
+                            fill="#F46C3F" 
+                            />
+                            <span>Book Now</span>
+                        </ButtonComponent>
+                    </Link>
+                    <a 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={pageData?.trailer}>
+                        <ButtonComponent
+                        fontWeight="600" 
+                        color="white"
+                        padding="0.7rem 1rem"
+                        backgroundColor="#706bfa" 
+                        radius="0.8rem">
+                            <Play size="2rem" fill="#fff"/>
+                            <span>Watch Trailer</span>
+                        </ButtonComponent>
+                    </a>
                 </Divs>
+
              </PageContent>
              </>
               : <div>Loading...</div>   
          }
+
         </Page>
     )
 }
@@ -146,14 +177,22 @@ align-items: center;
 flex-direction: ${props => props.flexDir || 'row'};
 gap: ${props => props.gap};
 margin: ${props => props.margin || '0'};
+.movie{
+    &-runtime,&-mmpa{
+        font-size : 0.9rem;
+        font-weight: 300;
+        align-self: flex-end;
+    }
+}
+a{
+    text-decoration: none;
+}
 span{
     height:max-content;
-    color:#F58880;
     font-weight: 600;
     display:flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
 }
 h2{
     color : #FBAA3F;
@@ -184,6 +223,7 @@ h3{
         border-radius:50%;
         border: 3px solid #FBAA3F;
         color: #FBAA3F;
+        font-size: 1.5rem;
     }
 }
 `
@@ -191,6 +231,7 @@ const StarRate = styled.div`
 display: flex;
 gap: 0.3rem;
 justify-content: start;
+align-items: center;
 `
 const MovieRoles = styled.div`
 display: flex;
