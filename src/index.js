@@ -18,7 +18,7 @@ const AuthisLoaded = ({ children }) => {
             <Spinner fill="#F46C3F"/>
          </div>
       );   
-return children;
+   return children;
 }
 
 ReactDOM.render(

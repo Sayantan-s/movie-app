@@ -116,5 +116,54 @@
          ],
          "trailer" : "https://www.youtube.com/watch?v=F8-8xOPB9XY"
      }
+},
+"sputnik" :    {
+    "thumbnail" : {
+         "name": "Sputnik",
+         "photoUrl" : "https://www.joblo.com/assets/images/joblo/posters/2020/09/sputnik-poster.jpg",
+         "movieProps" : {
+             "rates" : 14439,
+             "rating": 6.4,
+             "release" : 2020,
+             "RunTime" :113,
+             "genre" : [
+                    "Comedy",
+                    "Horror"
+                 ]
+             }
+    },
+    "moviepage": {
+        "name": "Sputnik",
+        "photoUrl" : "https://www.joblo.com/assets/images/joblo/posters/2020/09/sputnik-poster.jpg",
+        "movieProps" : {
+             "star" : 3,
+             "rates" : 14439,
+             "rating": 6.4,
+             "release" : 2020,
+             "RunTime" :113,
+             "genre" : [
+                    "Comedy",
+                    "Horror"
+                 ]
+             },
+         "description" : "At the height of the Cold War, a Soviet spacecraft crash lands after a mission gone awry, leaving the commander as its only survivor. After a renowned Russian psychologist is brought in to evaluate the commander's mental state, it becomes clear that something dangerous may have come back to Earth with him.",
+         "director" : "Egor Abramenko",
+         "writers" : ["Oleg Malovichko","Andrey Zolotarev"],
+         "cast" : [
+             {
+                 "name" : "Pyotr Fyodorov",
+                 "img" : "http://www.gstatic.com/tv/thumb/persons/649086/649086_v9_ba.jpg"
+             },
+             {   
+                 "name" : "Fedor Bondarchuk",   
+                 "img" : "https://m.media-amazon.com/images/M/MV5BN2UwZTI0NGItMjYwYS00OTJlLThhNjItNDA0NTE3MjdjOWUxL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTc4MzI2NQ@@._V1_.jpg"
+             },
+             {
+                 "name" : "Oksana Akinshina",
+                 "img" : "https://assets.airmail.news/static/images/BAh7CEkiCGdpZAY6BkVUSSIzZ2lkOi8vYWlyLW1haWwvQXJ0aWNsZTo6UGhvdG8vMjgyOTc_ZXhwaXJlc19pbgY7AFRJIgxwdXJwb3NlBjsAVEkiDGRlZmF1bHQGOwBUSSIPZXhwaXJlc19hdAY7AFQw--db0762b1f78705686712280bd7a18d8d1ee83db7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9MY21WemFYcGxTU0lKT0RJd1BnWTZCa1ZVT2hCaGRYUnZYMjl5YVdWdWRGUTZESEYxWVd4cGRIbHBhUT09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--aa8eed21d45351db6da58cc82c6645f8dde4a19a/photo-1597517349.jpeg"
+             }
+         ],
+         "trailer" : "https://www.youtube.com/watch?v=oGgtRsvq6hc"
+     }
 }
 }

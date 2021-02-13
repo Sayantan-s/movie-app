@@ -9,7 +9,7 @@ const Dashboard = (props) => {
     console.log(movies)
     return (
         <div>
-        <NowShowing />
+            <NowShowing />
             <BrowseByCatagory />
         </div>
     )

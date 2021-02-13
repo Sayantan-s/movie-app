@@ -1,18 +1,28 @@
-import { ADD_TICKET } from "../action.redux"
+import { ADD_TICKET, DELETE_TICKET } from "../action.redux"
 
 const initialState = {
     orderName : '',
-    noOfTickets : 0
+    noOfTickets : 0,
+    TotalCost : 0.0
 }
 
-export const ticketOrder = (state = initialState,action) => {
+export default (state = initialState,action) => {
     switch(action.type){
         case ADD_TICKET :
             return {
                 ...state,
                 orderName : action.moviename,
-                noOfTickets : state.noOfTicket + action.payload
+                noOfTickets : state.noOfTickets + 1,
+                TotalCost : state.TotalCost + action.ticketPrice
             }
-        default: state
+
+        case DELETE_TICKET : 
+            return {
+                ...state,
+                orderName : action.moviename,
+                noOfTickets : state.noOfTickets - 1,
+                TotalCost : state.TotalCost - action.ticketPrice
+            }
+        default: return state
     }
 }

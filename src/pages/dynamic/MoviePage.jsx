@@ -6,7 +6,7 @@ import { Catagory, Play, Star,Ticket2,Voters } from '../../utils/Icons';
 import Image from '../../utils/Image.component';
 import Spinner from '../../utils/Spinner.component';
 import { NormalAvatar } from '../../components/ui/Avatar.component'
-import { Route, useHistory } from 'react-router';
+import { Redirect, Route, useHistory } from 'react-router';
 import ButtonComponent from '../../components/ui/Button.component';
 import { Link } from 'react-router-dom';
 
@@ -28,6 +28,9 @@ const MoviePage = (props) => {
     for(let i = 0;i< pageData?.movieProps.star;i++){
         starArray.push(i);
     }
+
+    const uid = useSelector(state => state.firebase.auth.uid);
+
     return (
         <Page>
          {
@@ -90,14 +93,12 @@ const MoviePage = (props) => {
                                 />
                             })
                         }
-                       <span>
-                       {notShowing.length}+
-                       </span>
+                      {notShowing.length !== 0 && <span>{notShowing.length}+</span>}
                     </div>
                 </Divs>
                 <Divs margin="2.5rem 0 0 0" gap={"1rem"}>
                     <Link
-                    to={`${pathname}/${pageData.name} hallbooking`}
+                    to={uid ? `${pathname}/${pageData.name} hallbooking` : '/auth/login'}
                     >
                         <ButtonComponent 
                         padding="0.7rem 1rem"
