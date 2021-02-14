@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { Route, Switch, useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Spinner from '../utils/Spinner.component'
 import MovieCards from './ui/MovieCards.component'
 
 const BrowseByCatagory = () => {
@@ -45,7 +46,7 @@ const BrowseByCatagory = () => {
                       </CardLink>
                   } )
                }
-            </MovieStack> : <div>Loading...</div>}
+            </MovieStack> :  <Spinner fill="#706bfa" />  }
        </SectionBrowse>
     )
 }

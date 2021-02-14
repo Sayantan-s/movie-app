@@ -5,7 +5,8 @@ import styled from 'styled-components'
 const AuthSecondaryRoutes = ({text,linktext,to}) => {
     return (
        <AuthText>
-           { text } <span><Link to={to}>{linktext}</Link></span>
+           { text } 
+           <span><Link to={to}>{linktext}</Link></span>
        </AuthText>
     )
 }

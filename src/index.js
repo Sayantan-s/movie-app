@@ -8,15 +8,27 @@ import { Provider, useSelector } from 'react-redux';
 import store, { rrfProps } from './store/store.redux';
 import { ReactReduxFirebaseProvider,isLoaded } from 'react-redux-firebase';
 import Spinner from './utils/Spinner.component';
+import styled from 'styled-components';
 //import styled from 'styled-components';
+const LoadingState = styled.div`
+position:fixed;
+top: 0;
+left: 0;
+z-index : 10000;
+height : 100vh;
+width : 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+`
 
 const AuthisLoaded = ({ children }) => {
    const auth = useSelector((state) => state.firebase.auth);   
    if(!isLoaded(auth))
       return (
-         <div>
+       <LoadingState>
             <Spinner fill="#F46C3F"/>
-         </div>
+       </LoadingState>
       );   
    return children;
 }
@@ -36,7 +48,6 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+

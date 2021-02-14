@@ -165,5 +165,52 @@
          ],
          "trailer" : "https://www.youtube.com/watch?v=oGgtRsvq6hc"
      }
+},
+"echoboomers" :    {
+    "thumbnail" : {
+         "name": "Echo Boomers",
+         "photoUrl" : "https://www.joblo.com/assets/images/joblo/posters/2020/10/echoboomersposter1.jpg",
+         "movieProps" : {
+            "rates" : 2838,
+             "rating": 6.1,
+             "release" : 2020,
+             "RunTime" :94,
+             "genre" : [
+                "Action", "Crime"
+                 ]
+             }
+    },
+    "moviepage": {
+        "name": "Echo Boomers",
+        "photoUrl" : "https://www.joblo.com/assets/images/joblo/posters/2020/10/echoboomersposter1.jpg",
+        "movieProps" : {
+             "star" : 2,
+             "rates" : 2838,
+             "rating": 6.1,
+             "release" : 2020,
+             "RunTime" :94,
+             "genre" : [
+                "Action", "Crime"
+                 ]
+             },
+         "description" : "Two-time Academy Award nominee Michael Shannon (Knives Out) stars in this gripping crime-thriller filled with pulse-pounding twists and turns. A recent college graduate Lance Zutterland (Patrick Schwarzenegger) leaves school in debt, realizing everything he had worked towards was built on a lie. When he is pulled into a criminal underground operation, he finds his peers fighting the system by stealing from the rich and giving to - themselves. With nothing to lose, they leave behind a trail of destruction but with the cops closing in, tensions mount and Lance soon discovers he is in over his head with no way out. Written by Saban Films",
+         "director" : "Seth Savoy",
+         "writers" : ["Kevin Bernhardt","Jason Miller"],
+         "cast" : [
+             {
+                 "name" : "Alex Pettyfer",
+                 "img" : "http://www.gstatic.com/tv/thumb/persons/490362/490362_v9_ba.jpg"
+             },
+             {   
+                 "name" : "Patrick Schwarzenegger",   
+                 "img" : "https://www.usmagazine.com/wp-content/uploads/2020/02/Patrick-Schwarzenegger-My-Sister-Katherine-Happiest-With-Chris-Pratt-03.jpg?quality=86&strip=all"
+             },
+             {
+                 "name" : "Michael Shannon",
+                 "img" : "https://images.newindianexpress.com/uploads/user/imagelibrary/2020/6/23/w1200X800/Michael_Shannon_AP.jpg"
+             }
+         ],
+         "trailer" : "https://www.youtube.com/watch?v=CwShtZV6-Ss"
+     }
 }
 }
