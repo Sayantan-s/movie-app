@@ -212,5 +212,62 @@
          ],
          "trailer" : "https://www.youtube.com/watch?v=CwShtZV6-Ss"
      }
+},
+"minari" :    {
+    "thumbnail" : {
+         "name": "Minari",
+         "photoUrl" : "https://www.joblo.com/assets/images/joblo/posters/2021/02/minari-review-poster.jpg",
+         "movieProps" : {
+            "rates" : 6429,
+             "rating": 7.7,
+             "release" : 2020,
+             "RunTime" :115,
+             "MMPARating":"PG-13",
+             "genre" : [
+                "Drama", "Crime"
+                 ]
+             }
+    },
+    "moviepage": {
+        "name": "Echo Boomers",
+        "photoUrl" : "https://www.joblo.com/assets/images/joblo/posters/2021/02/minari-review-poster.jpg",
+        "movieProps" : {
+             "star" : 5,
+             "rates" : 6429,
+             "rating": 7.7,
+             "release" : 2020,
+             "RunTime" :115,
+             "MMPARating":"PG-13",
+             "genre" : [
+                "Drama", "Crime"
+                 ]
+             },
+         "description" : "A Korean family starts a farm in 1980s Arkansas.",
+         "director" : "Lee Isaac Chung",
+         "writers" : ["Lee Isaac Chung"],
+         "cast" : [
+             {
+                 "name" : "Steven Yeun",
+                 "img" : "https://variety.com/wp-content/uploads/2019/07/steven-yeun.jpg"
+             },
+             {   
+                 "name" : "Yeri Han",   
+                 "img" : "https://6.viki.io/image/39349b52aaf4416bb710a5b265a4723e.jpeg?s=900x600&e=t"
+             },
+             {
+                 "name" : "Alan S. Kim",
+                 "img" : "https://variety.com/wp-content/uploads/2020/12/Alan-S-Kim-Minari.jpg?w=1000"
+             },
+             {
+                "name" : "Esther Moon",
+                "img" : "https://m.media-amazon.com/images/M/MV5BZjgxMmVlMzYtZDE3NS00ZWEwLTk3YjYtNmYyZmY0Nzg4MDBkXkEyXkFqcGdeQXVyNjY1MjczODk@._V1_.jpg"
+            },
+            {
+                "name" : "Chloe Lee",
+                "img" : "https://superstarsbio.com/wp-content/uploads/2020/04/Chloe-Lee-bio.jpg"
+            }
+         ],
+         "trailer" : "https://www.youtube.com/watch?v=KQ0gFidlro8"
+     }
 }
 }
