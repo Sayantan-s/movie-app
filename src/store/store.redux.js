@@ -10,13 +10,13 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
  
 const firebaseConfig = {
-    apiKey: "AIzaSyBLhMBEMVriTeHmOlTkhFcWGyJFFv4FVZE",
-    authDomain: "movie-app-1eaef.firebaseapp.com",
-    projectId: "movie-app-1eaef",
-    storageBucket: "movie-app-1eaef.appspot.com",
-    messagingSenderId: "236134169054",
-    appId: "1:236134169054:web:8b3e253b690afa8323054f",
-    measurementId: "G-QL35C0B92B"
+  apiKey: "AIzaSyBLhMBEMVriTeHmOlTkhFcWGyJFFv4FVZE",
+  authDomain: "movie-app-1eaef.firebaseapp.com",
+  projectId: "movie-app-1eaef",
+  storageBucket: "movie-app-1eaef.appspot.com",
+  messagingSenderId: "236134169054",
+  appId: "1:236134169054:web:8c125a9bd2f6650c23054f",
+  measurementId: "G-R7JKE0GQ8Y"
   };
 
 firebase.initializeApp(firebaseConfig)
@@ -44,3 +44,12 @@ export const rrfProps = {
 }
 
 export default store
+
+
+/* apiKey: "AIzaSyBLhMBEMVriTeHmOlTkhFcWGyJFFv4FVZE",
+  authDomain: "movie-app-1eaef.firebaseapp.com",
+  projectId: "movie-app-1eaef",
+  storageBucket: "movie-app-1eaef.appspot.com",
+  messagingSenderId: "236134169054",
+  appId: "1:236134169054:web:406a9ab94a2a323223054f",
+  measurementId: "G-7KMFZ482ML" */
